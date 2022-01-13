@@ -1,5 +1,6 @@
 global: 
   applicationName: wcag
+  region: us-central1
 image:
   name: gcr.io/g5-images/accessibility-report
 configurations:
@@ -15,3 +16,6 @@ configurations:
     configMapData:
       BROWSER_URL: 'https://accessibility.g5marketingcloud.com/'
       BASE_URL: 'accessibility.g5marketingcloud.com'
+activeCloudSQLSubchart: "cloud-sql"
+cloud-sql: 
+  databaseVersion: POSTGRES_11
