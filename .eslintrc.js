@@ -17,6 +17,7 @@ module.exports = {
     'nuxt/no-cjs-in-config': 1,
     "vue/comment-directive": 0,
     curly: 0,
-    camelcase: ['warn', { properties: 'never', ignoreDestructuring: true }]
+    camelcase: ['warn', { properties: 'never', ignoreDestructuring: true }],
+    'space-before-function-paren': 0
   }
 }

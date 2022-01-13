@@ -55,14 +55,5 @@ module.exports = {
     bootstrapVueCSS: false,
     config: {}
   },
-  axios: { browserBaseURL: `//${process.env.BROWSER_URL}` },
-  build: {
-    extend (config, ctx) {
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient
-          ? 'source-map'
-          : 'inline-source-map'
-      }
-    }
-  }
+  axios: { browserBaseURL: `//${process.env.BROWSER_URL}` }
 }
