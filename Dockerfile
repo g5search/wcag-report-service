@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:10
 
 ARG NPM_TOKEN
 ARG BROWSER_URL
@@ -9,6 +9,7 @@ WORKDIR /usr/src/opex
 COPY . /usr/src/opex
 RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 RUN npm install
+RUN npm rebuild node-sass
 RUN npm run build
 
 ENV PORT=8085

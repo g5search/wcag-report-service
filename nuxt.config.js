@@ -1,6 +1,7 @@
 require('dotenv').config()
 module.exports = {
-  mode: 'spa',
+  ssr: false,
+  telemetry: false,
   server: {
     host: process.env.BASE_URL || '0.0.0.0',
     port: process.env.PORT || 8085
@@ -44,7 +45,7 @@ module.exports = {
     '@nuxtjs/google-analytics'
   ],
   googleAnalytics: {
-    id: '',
+    id: 'UA-115892674-15',
     debug: {
       enabled: false,
       sendHitTask: true

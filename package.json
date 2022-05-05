@@ -6,7 +6,7 @@
   "config": {
     "imageRepo": "gcr.io/g5-images/accessibility-report",
     "imageName": "accessibility-report"
-  }, 
+  },
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
@@ -27,6 +27,7 @@
     "helm:upgrade:prime": " branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD); sha=$(git rev-parse $branch); helm upgrade accessibility ./chart/ -f ./chart/opex-prime.yaml --set=image.tag=$branch-$sha-prime"
   },
   "dependencies": {
+    "@cloudnative/health-connect": "^2.1.0",
     "@getg5/g5-updatable": "^2.1.0",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
@@ -58,8 +59,8 @@
     "eslint": "^7.19.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^26.5.0",
-    "node-sass": "^5.0.0",
-    "sass-loader": "^10.1.1",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.3.1",
     "vue-jest": "^3.0.4"
   }
 }
