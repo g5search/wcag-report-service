@@ -19,9 +19,9 @@ async function start () {
   }
   require('./routes')(app)
   app.use(nuxt.render)
-  app.use('/live', health.LivenessEndpoint(healthcheck))
-  app.use('/ready', health.ReadinessEndpoint(healthcheck))
-  app.use('/health', health.HealthEndpoint(healthcheck))
+  app.use('/healthz/live', health.LivenessEndpoint(healthcheck))
+  app.use('/healthz/ready', health.ReadinessEndpoint(healthcheck))
+  app.use('/healthz/health', health.HealthEndpoint(healthcheck))
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
