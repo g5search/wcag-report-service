@@ -7,7 +7,7 @@ metadata:
   annotations:
     reloader.stakater.com/search: "true"
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 5
   strategy:
     type: RollingUpdate
@@ -29,8 +29,8 @@ spec:
       containers:
         - name: node
           ports:
-            - name: http
-              containerPort: 8085
+          - name: http
+            containerPort: 8085
           image: {{ .Values.image.name }}:{{ required "image.tag is required" .Values.image.tag }}
           imagePullPolicy: Always
           resources:
@@ -40,6 +40,9 @@ spec:
             requests:
               cpu: 200m
               memory: 300Mi
+          command:
+            - npm
+            - start
           env:
             - name: BROWSER_URL
               valueFrom:
