@@ -70,6 +70,8 @@ spec:
               value: {{ include "accessibility.crsInstanceName" . }}
             - name: DATABASE_URL
               value: $(DATABASE_DIALECT)://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)
+            - name: BASE_URL
+              value: 0.0.0.0
           {{- if .Values.image.livenessProbe }}
           livenessProbe:
 {{ toYaml .Values.image.livenessProbe | indent 10 }}
