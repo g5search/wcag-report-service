@@ -61,6 +61,10 @@ Create the name of the service account to use
 {{ include "cloud-helper.gcp.safeGSAName" .Release.Name }}
 {{- end }}
 
+{{- define "accessibility.crsInstanceName" -}}
+{{ .Values.crsInstanceName }}
+{{- end }}
+
 {{- define "validate-configuration" }}
 {{- if not .Values.configuration }}
 {{ fail "a configuration is required!" }}
