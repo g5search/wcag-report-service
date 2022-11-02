@@ -1,8 +1,26 @@
 global: 
-  applicationName: wcag
+  applicationName: accessibility
   region: us-central1
-image:
-  name: gcr.io/g5-images/accessibility-report
+node-web-service:
+  database:
+    enabled: true
+  cache:
+    enabled: false
+  cloud-sql:
+    databaseVersion: POSTGRES_11
+  image:
+    name: gcr.io/g5-images/accessibility
+  isInternetFacing: true
+  hasMetrics: false
+  replicaCount: 2
+  revisionHistoryLimit: 1
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2000Mi
+    requests:
+      cpu: 200m
+      memory: 300Mi
 configurations:
   staging:
     configMapData:
@@ -16,6 +34,35 @@ configurations:
     configMapData:
       BROWSER_URL: 'https://accessibility.g5marketingcloud.com/'
       BASE_URL: 'accessibility.g5marketingcloud.com'
-activeCloudSQLSubchart: "cloud-sql"
-cloud-sql: 
-  databaseVersion: POSTGRES_11
+  env:
+    - name: BROWSER_URL
+      valueFrom:
+        configMapKeyRef:
+          name: {{ .Release.Name }}
+          key: BROWSER_URL
+    - name: DATABASE_HOST
+      valueFrom:
+        secretKeyRef:
+          name: accessibility
+          key: database-host
+    - name: DATABASE_DIALECT
+      value: postgres
+    - name: DATABASE_IDLE
+      value: "10000"
+    - name: DATABASE_AQUIRE
+      value: "10000"
+    - name: DATABASE_EVICT
+      value: "10000"
+    - name: DATABASE_PORT
+      value: "5432"
+    - name: DATABASE_SSL
+      value: "false"
+    - name: DATABASE_LOGGING
+      value: "false"
+    - name: DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: accessibility-a-sqluser-password 
+          key: password 
+    - name: DATABASE_URL
+      value: $(DATABASE_DIALECT)://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)
