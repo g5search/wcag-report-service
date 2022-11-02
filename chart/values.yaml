@@ -21,24 +21,24 @@ node-web-service:
     requests:
       cpu: 200m
       memory: 300Mi
-configurations:
-  staging:
-    configMapData:
-      BROWSER_URL: 'https://accessibility-opex-staging.g5devops.com'
-      BASE_URL: 'accessibility-opex-staging.g5devops.com'
-  prime:
-    configMapData:
-      BROWSER_URL: 'https://accessibility-opex-prime.g5devops.com'
-      BASE_URL: 'accessibility-opex-prime.g5devops.com'
-  production:
-    configMapData:
-      BROWSER_URL: 'https://accessibility.g5marketingcloud.com/'
-      BASE_URL: 'accessibility.g5marketingcloud.com'
+  configurations:
+    staging:
+      configMapData:
+        BROWSER_URL: 'https://accessibility-opex-staging.g5devops.com'
+        BASE_URL: 'accessibility-opex-staging.g5devops.com'
+    prime:
+      configMapData:
+        BROWSER_URL: 'https://accessibility-opex-prime.g5devops.com'
+        BASE_URL: 'accessibility-opex-prime.g5devops.com'
+    production:
+      configMapData:
+        BROWSER_URL: 'https://accessibility.g5marketingcloud.com/'
+        BASE_URL: 'accessibility.g5marketingcloud.com'
   env:
     - name: BROWSER_URL
       valueFrom:
         configMapKeyRef:
-          name: {{ .Release.Name }}
+          name: accessibility
           key: BROWSER_URL
     - name: DATABASE_HOST
       valueFrom:
