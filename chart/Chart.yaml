@@ -26,3 +26,6 @@ dependencies:
   - name: cloud-helper
     version: "1.0.1"
     repository: "@g5-multiverse-helm3-repositories"
+  - name: cloud-sql
+    version: "1.0.0"
+    repository: "@g5-multiverse-helm3-repositories"
