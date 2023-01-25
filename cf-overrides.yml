@@ -17,7 +17,13 @@ DisableYarn: true
 # Any valid Dockerfile commands, which will be inserted directly before
 # project-specific dependencies are installed. Note the use of the `|-`
 # to denote that it is a multiline string.
-# PreDependency: |-
+PreDependency: |-
+  ARG BROWSER_URL
+  RUN mkdir -p /usr/src/opex
+  WORKDIR /usr/src/opex
+  COPY . /usr/src/opex
+  RUN npm install
+  RUN npm run build
 #   RUN any-valid-dockerfile-commands
 
 # Replaces the default command for installing dependencies (via npm). Can be

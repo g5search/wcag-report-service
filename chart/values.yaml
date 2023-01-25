@@ -2,6 +2,7 @@ global:
   applicationName: accessibility
   region: us-central1
 node-web-service:
+  disableHealthChecking: true
   database:
     enabled: true
   cache:
