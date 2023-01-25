@@ -2,12 +2,13 @@ global:
   applicationName: accessibility
   region: us-central1
 node-web-service:
-  disableHealthChecking: true
+  # disableHealthChecking: true
   database:
     enabled: true
   cache:
     enabled: false
   cloud-sql:
+    enabled: false
     databaseVersion: POSTGRES_11
   image:
     name: gcr.io/g5-images/accessibility
@@ -43,9 +44,9 @@ node-web-service:
           key: BROWSER_URL
     - name: DATABASE_HOST
       valueFrom:
-        secretKeyRef:
-          name: accessibility
-          key: database-host
+        configMapKeyRef:
+          name: crs-a-sqlinstance
+          key: private-ip-address
     - name: DATABASE_DIALECT
       value: postgres
     - name: DATABASE_IDLE
@@ -54,6 +55,10 @@ node-web-service:
       value: "10000"
     - name: DATABASE_EVICT
       value: "10000"
+    - name: DATABASE_MIN_CONNECTIONS
+      value: "0"
+    - name: DATABASE_MAX_CONNECTIONS
+      value: "100"
     - name: DATABASE_PORT
       value: "5432"
     - name: DATABASE_SSL
@@ -63,7 +68,7 @@ node-web-service:
     - name: DATABASE_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: accessibility-a-sqluser-password 
+          name: crs-a-sqluser-password 
           key: password 
     - name: DATABASE_URL
       value: $(DATABASE_DIALECT)://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)

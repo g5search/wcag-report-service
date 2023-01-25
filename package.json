@@ -25,7 +25,7 @@
     "helm:upgrade:prod": "helm upgrade accessibility ./chart/ -f ./chart/opex-prod.yaml --set=image.tag=$npm_package_version",
     "helm:upgrade:staging": " branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD); sha=$(git rev-parse $branch); helm upgrade accessibility ./chart/ -f ./chart/opex-staging.yaml --set=image.tag=$branch-$sha",
     "helm:upgrade:prime": " branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD); sha=$(git rev-parse $branch); helm upgrade accessibility ./chart/ -f ./chart/opex-prime.yaml --set=image.tag=$branch-$sha-prime",
-    "helm:deploy": "branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD); sha=$(git rev-parse $branch); helm upgrade --install --namespace=default accessibility --values=opex-staging.yaml --set node-web-service.image.tag=$branch-$sha ."
+    "helm:deploy": "branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD); sha=$(git rev-parse $branch); helm upgrade --install --namespace=default accessibility --values=chart/opex-staging.yaml --set node-web-service.image.tag=$branch-$sha ./chart/"
   },
   "dependencies": {
     "@getg5/g5-updatable": "^2.1.0",
