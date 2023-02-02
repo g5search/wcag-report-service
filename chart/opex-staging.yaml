@@ -9,3 +9,4 @@ node-web-service:
   environment: opex-staging
   cloud-sql:
     instanceSuffix: a
+  crsInstanceSuffix: a

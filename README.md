@@ -34,4 +34,4 @@ You can override some of these settings using the shell script directly.
 -p    <project> is the project name, aka the context, you are deploying to. Ex. opex-staging-b877
 ```
 
-Any inadvertant deploys can be reversed by running `helm rollback cas`.
+Any inadvertant deploys can be reversed by running `helm rollback accessibility`.
