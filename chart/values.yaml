@@ -4,7 +4,7 @@ global:
 node-web-service:
   # disableHealthChecking: true
   database:
-    enabled: true
+    enabled: false
   cache:
     enabled: false
   cloud-sql:
