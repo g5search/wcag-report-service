@@ -1,6 +1,6 @@
 # REQUIRED - Valid tag for node image to use as the basis for this
 # application's Docker image. See https://hub.docker.com/r/library/node/tags/
-BaseImageTag: "12.0.0"
+BaseImageTag: "12.22.1"
 
 CIPlan: "g5search/ci-plan-node:make-builds-work"
 #CIPlan: "g5search/ci-plan-node:v1.0.2"
