@@ -42,11 +42,6 @@ node-web-service:
         configMapKeyRef:
           name: accessibility
           key: BROWSER_URL
-    - name: DATABASE_HOST
-      valueFrom:
-        configMapKeyRef:
-          name: crs-a-sqlinstance
-          key: private-ip-address
     - name: DATABASE_DIALECT
       value: postgres
     - name: DATABASE_IDLE
