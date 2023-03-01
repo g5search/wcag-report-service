@@ -1,6 +1,8 @@
 require('dotenv').config()
+
 module.exports = {
-  mode: 'spa',
+  ssr: false,
+  telemetry: false,
   server: {
     host: process.env.BASE_URL || '0.0.0.0',
     port: process.env.PORT || 8085
@@ -16,7 +18,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Report Viewer for WCAG Scans'
       }
     ],
     link: [{
@@ -43,17 +45,19 @@ module.exports = {
     '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics'
   ],
-  googleAnalytics: {
-    id: '',
-    debug: {
-      enabled: false,
-      sendHitTask: true
-    }
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GA_PROPERTY || 'UA-XXXXXXXX-X',
+      debug: {
+        enabled: false,
+        sendHitTask: true
+      }
+    },
+    axios: { browserBaseURL: process.env.BROWSER_URL }
   },
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false,
     config: {}
-  },
-  axios: { browserBaseURL: `//${process.env.BROWSER_URL}` }
+  }
 }
