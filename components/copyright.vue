@@ -5,7 +5,7 @@
         ©
       </span>
       <b-img-lazy
-        src="/g5-primary-logo.png"
+        src="/G5-logo-2023-wht.png"
         width="25px"
         alt="G5 Logo"
         class="mr-1"
