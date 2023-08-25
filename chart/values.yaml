@@ -60,6 +60,15 @@ node-web-service:
       value: "false"
     - name: DATABASE_LOGGING
       value: "false"
+    - name: DATABASE_USER
+      value: "crs-a"
+    - name: DATABASE_NAME
+      value: "crs-a"
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: crs-a-sqlinstance
+          key: private-ip-address
     - name: DATABASE_PASSWORD
       valueFrom:
         secretKeyRef:
