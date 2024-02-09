@@ -38,26 +38,26 @@ module.exports = {
     '~/plugins/apex-chart.js',
     '~/plugins/smooth-scroll.js'
   ],
-  buildModules: ['@nuxtjs/eslint-module'],
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/dotenv'
   ],
   publicRuntimeConfig: {
-    googleAnalytics: {
-      id: process.env.GA_PROPERTY || 'UA-XXXXXXXX-X',
-      debug: {
-        enabled: false,
-        sendHitTask: true
-      }
-    },
     axios: { browserBaseURL: process.env.BROWSER_URL }
   },
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false,
     config: {}
+  },
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          autoprefixer: {}
+        }
+      }
+    }
   }
 }
