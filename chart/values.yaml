@@ -82,9 +82,9 @@ node-web-service:
     - name: DATABASE_URL
       value: $(DATABASE_DIALECT)://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)
     - name: HUB_CLIENTS_SUBSCRIPTION
-      value: "clients-wcag"
+      value: "clients-accessibility"
     - name: HUB_LOCATIONS_SUBSCRIPTION
-      value: "locations-wcag"
+      value: "locations-accessibility"
     - name: PROJECT_ID
       valueFrom:
         configMapKeyRef:
