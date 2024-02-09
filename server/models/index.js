@@ -31,7 +31,7 @@ const sequelize = new Sequelize(dbUrl, {
       key: fs.readFileSync(path.join(__dirname, key))
     } : false
   },
-  logging: (logging === 'true')
+  logging: (logging === 'true') ? console.log : false
 })
 
 // Add Models from plugins
@@ -43,7 +43,7 @@ const db = {
 fs.readdirSync(__dirname)
   .filter(file => file.indexOf('.') !== 0 && file !== 'index.js' && file !== 'sync.js' && file !== 'prototypes' && file !== 'hooks') // get all the model files
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file))
+    const model = require(path.join(__dirname, file))(sequelize)
     const { name } = model
     db[name] = model
   })
