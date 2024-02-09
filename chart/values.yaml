@@ -14,6 +14,11 @@ node-web-service:
     name: gcr.io/g5-images/accessibility
   isInternetFacing: true
   hasMetrics: false
+  subscriptions:
+    clients:
+      associatedProject: content
+    locations:
+      associatedProject: content
   replicaCount: 2
   revisionHistoryLimit: 1
   resources:
@@ -76,3 +81,12 @@ node-web-service:
           key: password 
     - name: DATABASE_URL
       value: $(DATABASE_DIALECT)://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)
+    - name: HUB_CLIENTS_SUBSCRIPTION
+      value: "clients-wcag"
+    - name: HUB_LOCATIONS_SUBSCRIPTION
+      value: "locations-wcag"
+    - name: PROJECT_ID
+      valueFrom:
+        configMapKeyRef:
+          name: environment-info
+          key: project_id
